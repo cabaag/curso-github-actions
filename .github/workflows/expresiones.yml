@@ -42,4 +42,4 @@ jobs:
     runs-on: ubuntu-latests
     steps:
       - name: Building JS
-      run: echo "Building ${{ inputs.build }}"
+        run: echo "Building ${{ inputs.build }}"
