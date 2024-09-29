@@ -1,0 +1,29 @@
+name: Triggers
+
+on:
+  push:  #PUSH
+    branches: ['main', 'aprendiendo-**']
+    paths: ['**.yml']
+  
+  pull_request:  # PR
+    types: [opened, labeled]
+    branches: ['main', 'aprendiendo-**']
+    paths: ['**.yml']
+  workflow_dispatch:
+
+jobs:
+  job-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.4
+      - name: Run hello world
+        run: node hello-world.js
+
+        
+    
+    
