@@ -1,0 +1,45 @@
+name: Condicionales
+run-name: Estoy usando condicionales
+
+on:
+  pull_request:
+    types:
+      - synchronize
+    paths:
+      - '**.yml'
+
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Motivo de uso'
+        required: true
+        type: string
+      build:
+        description: Build packages
+        required: true
+        type: choice
+        options:
+          - Python
+          - JavaScript
+          - TypeScript
+
+jobs:
+  check-conditional:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Definir motivo
+        run: echo "REASON=${{ inputs.reason }}" >> $GITHUB_ENV
+      - name: Definir build
+        run: echo "BUILD=${{ inputs.build }}" >> $GITHUB_ENV
+      - name: Mostrar evento
+        run: echo ${{ github.event }}
+  build-js:
+    if: ${{ !contains(inputs.build, 'Python') }}
+    runs-on: ubuntu-latests
+    steps:
+      - name: Building JS
+      run: echo "Building ${{ inputs.build }}"
