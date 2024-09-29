@@ -1,13 +1,11 @@
 name: Expresiones
 run-name: Estoy usando condicionales
-
 on:
   pull_request:
     types:
       - synchronize
     paths:
       - '**.yml'
-
   workflow_dispatch:
     inputs:
       reason:
@@ -22,7 +20,6 @@ on:
           - Python
           - JavaScript
           - TypeScript
-
 jobs:
   check-conditional:
     runs-on: ubuntu-latest

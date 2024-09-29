@@ -1,11 +1,11 @@
 name: Triggers
-run-name: Estoy apreundiendo a usar triggers
+run-name: Estoy aprendiendo a usar triggers
 
 on:
   push:
     branches:
       - master
-  
+
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
@@ -56,6 +56,6 @@ jobs:
         run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
       - name: Correr script
         run: python hello-world.py
-        
-    
-    
+
+
+
