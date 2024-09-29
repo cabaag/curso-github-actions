@@ -6,5 +6,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Print Hello world
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.4
+      - name: Print from python
         run: python hello-world.py
+      - name: Print from javacsript
+        run: node hello-world.js
