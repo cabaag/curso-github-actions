@@ -6,8 +6,6 @@ env:
 jobs:
   set-timestamp:
     runs-on: ubuntu-latest
-    outputs:
-      steps: ${{ steps.timestamp.outputs }}
     env:
       LOCAL_TIMESTAMP: (date +"%Y%m%d%H%M%S")
     steps:
@@ -16,10 +14,6 @@ jobs:
         run: echo "TIMESTAMP=$(date +"%Y%m%d%H%M%S")" >> $GITHUB_ENV
       - name: Local Timestamp
         run: echo "$LOCAL_TIMESTAMP"
-  use-timestamp:
-    needs: set-timestamp
-    runs-on: ubuntu-latest
-    steps:
-      - name: Use Timestamp
-        run: echo "Timestamp is $TIMESTAMP"
+      - name: Show env
+        run: echo "ENVIRONMENT $ENVIRONMENT"
 
