@@ -1,0 +1,14 @@
+name: Test On Workflow Dispatch
+run-name: Run Name Test On Workflow Dispatch
+on:
+  workflow_dispatch:
+
+jobs:
+  test-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Redeploy env
+        env:
+          ENVIRONMENT: production
+        run: echo "ENVIRONMENT $ENVIRONMENT"
+  
