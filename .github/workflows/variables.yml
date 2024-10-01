@@ -1,0 +1,24 @@
+name: Variables
+on: workflow_dispatch
+env:
+  ENVIRONMENT: PRODUCTION
+jobs:
+  set-timestamp:
+    runs-on: ubuntu-latest
+    outputs:
+      steps: ${{ steps.timestamp.outputs }}
+    env:
+      LOCAL_TIMESTAMP: (date +"%Y%m%d%H%M%S")
+    steps:
+      - name: Set Timestamp
+        id: timestamp
+        run: echo "TIMESTAMP=$(date +"%Y%m%d%H%M%S")" >> $GITHUB_ENV
+      - name: Local Timestamp
+        run: echo "$LOCAL_TIMESTAMP"
+  use-timestamp:
+    needs: set-timestamp
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Timestamp
+        run: echo "Timestamp is $TIMESTAMP"
+
