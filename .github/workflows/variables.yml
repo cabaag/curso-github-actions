@@ -1,5 +1,6 @@
 name: Variables
-on: workflow_dispatch
+run-name: Test variables
+on: push
 env:
   ENVIRONMENT: PRODUCTION
 jobs:
